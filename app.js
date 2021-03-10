@@ -7,6 +7,10 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+const MyConst = require('./routes/const')
+
+console.log("will use user-agent", MyConst.MyConst.userAgent, process.env.UserAgent)
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,6 +40,7 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+console.log(`will start at http://localhost:${ port}`)
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -75,17 +80,17 @@ function onError(error) {
   }
 
   const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    ? `Pipe ${  port}`
+    : `Port ${  port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${bind  } requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${bind  } is already in use`);
       process.exit(1);
       break;
     default:
@@ -100,7 +105,7 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    ? `pipe ${  addr}`
+    : `port ${  addr.port}`;
+  debug(`Listening on ${  bind}`);
 }
