@@ -134,6 +134,7 @@ export * from './biorxiv.org';
 export * from './epaper.zeit.de';
 export * from './www.gruene.de';
 export * from './timesofindia.indiatimes.com';
+export * from './www.ndtv.com';
 export * from './arstechnica.com';
 export * from './www.engadget.com';
 export * from './ma.ttias.be';
