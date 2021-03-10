@@ -26,6 +26,10 @@ describe('extractCleanNode(article, { $, cleanConditionally, title } })', () => 
       .replace(/\n/g, '')
       .replace(/\s+/g, ' ')
       .trim();
-    assert.equal(text.length === 2656 || text.length === 2657, true);
+    assert.equal(
+      text.length === 2657 || text.length === 2662,
+      true,
+      `${text.length}\n${text}`
+    );
   });
 });

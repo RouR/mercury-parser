@@ -38,7 +38,8 @@ describe('WiredJpExtractor', () => {
       // the article.
       assert.equal(
         title,
-        `あの有名フォント「Helvetica」は、こうしてデジタル時代に生まれ変わった`
+        `あの有名フォント「Helvetica」は、こうしてデジタル時代に生まれ変わった`,
+        `expected: ${title}`
       );
     });
 
@@ -51,7 +52,8 @@ describe('WiredJpExtractor', () => {
       // the article.
       assert.equal(
         author,
-        'TEXT BY ARIELLE PARDES\nTRANSLATION BY CHIHIRO OKA WIRED(US)'
+        'TEXT BY ARIELLE PARDES TRANSLATION BY CHIHIRO OKA WIRED(US)',
+        `expected: ${author}`
       );
     });
 

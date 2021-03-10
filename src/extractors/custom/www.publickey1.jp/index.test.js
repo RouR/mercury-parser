@@ -54,7 +54,8 @@ describe('WwwPublickey1JpExtractor', () => {
       // the article.
       assert.equal(
         author,
-        'Junichi Niino（jniino）\nIT系の雑誌編集者、オンラインメディア発行人を経て独立。2009年にPublickeyを開始しました。\n（詳しいプロフィール）'
+        'Junichi Niino（jniino） IT系の雑誌編集者、オンラインメディア発行人を経て独立。2009年にPublickeyを開始しました。 （詳しいプロフィール）',
+        `expected: ${author}`
       );
     });
 
