@@ -4,6 +4,8 @@ const router = express.Router();
 // const Mercury = require('@postlight/mercury-parser');
 const Mercury = require('../dist/mercury');
 
+const request = require('postman-request');
+
 const MyConst = require('../routes/const')
 
 /* GET home page. */
@@ -31,5 +33,21 @@ router.post('/parse-html', async (req, res) => {
 
   res.send(result)
 });
+
+router.get('/ip', async (req, res) => {
+    // var url = "http://httpbin.org/ip";
+    var url = req.query.url;
+    request(url, function (error, response, body) {
+        // console.log('error:', error); // Print the error if one occurred
+        // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        // console.log('body:', body); // Print the HTML for the Google homepage.
+        res.send(body);
+    });
+});
+
+router.get('/health', async (req, res) => {
+    res.send("Ok");
+});
+
 
 module.exports = router;
