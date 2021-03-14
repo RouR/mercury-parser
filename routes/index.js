@@ -14,7 +14,7 @@ router.get('/', function(_, res) {
 });
 
 router.get('/parse', async (req, res) => {
-    const result = await Mercury.parse(req.query.url, {
+    const result = await Mercury.parse(req.query.zzz, {
         headers: {
             // Cookie: 'name=value; name2=value2; name3=value3',
             'User-Agent': MyConst.MyConst.userAgent,
