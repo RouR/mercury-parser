@@ -9,8 +9,8 @@ const request = require('postman-request');
 const MyConst = require('../routes/const')
 
 /* GET home page. */
-router.get('/', function(_, res) {
-    res.send({ title: 'Welcome to Mercury Parser API', mercury: JSON.stringify(Mercury) });
+router.get('/', function (_, res) {
+    res.send({title: 'Welcome to Mercury Parser API', mercury: JSON.stringify(Mercury)});
 });
 
 router.get('/parse', async (req, res) => {
@@ -27,11 +27,12 @@ router.get('/parse', async (req, res) => {
 });
 
 router.post('/parse-html', async (req, res) => {
-  const result = await Mercury.parse(
-    req.body.url,
-    { contentType: 'html', html: req.body.html });
+    // console.log('parse-html request:', req.body); // check app.js
+    const result = await Mercury.parse(
+        req.body.url,
+        {contentType: 'html', html: req.body.html});
 
-  res.send(result)
+    res.send(result)
 });
 
 router.get('/ip', async (req, res) => {

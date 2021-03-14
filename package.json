@@ -111,11 +111,13 @@
   "dependencies": {
     "@babel/runtime-corejs2": "^7.2.0",
     "@postlight/ci-failed-test-reporter": "^1.0",
+    "body-parser": "^1.19.0",
     "browser-request": "github:postlight/browser-request#feat-add-headers-to-response",
     "cheerio": "^0.22.0",
     "debug": "~2.6.9",
     "difflib": "github:postlight/difflib.js",
     "ellipsize": "0.1.0",
+    "express": "^4.16.4",
     "http-errors": "~1.6.3",
     "iconv-lite": "0.5.0",
     "jquery": "^3.4.1",
@@ -130,7 +132,6 @@
     "url": "^0.11.0",
     "valid-url": "^1.0.9",
     "wuzzy": "^0.1.4",
-    "express": "^4.16.4",
     "yargs-parser": "^14.0.0"
   },
   "bundleDependencies": [

@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const http = require('http');
 const debug = require('debug')('mercury-parser-express:server');
+// const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 
@@ -12,7 +13,8 @@ const MyConst = require('./routes/const')
 console.log("will use user-agent", MyConst.MyConst.userAgent, process.env.UserAgent)
 
 app.use(logger('dev'));
-app.use(express.json());
+// app.use(bodyParser.json()) // for parsing application/json
+app.use(express.json({limit: '50mb', extended: true}));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
