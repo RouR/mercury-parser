@@ -1,15 +1,9 @@
 'use strict';
 
-var _Object$keys = require('@babel/runtime-corejs2/core-js/object/keys');
-var _Object$getOwnPropertySymbols = require('@babel/runtime-corejs2/core-js/object/get-own-property-symbols');
-var _Object$getOwnPropertyDescriptor = require('@babel/runtime-corejs2/core-js/object/get-own-property-descriptor');
-var _Object$getOwnPropertyDescriptors = require('@babel/runtime-corejs2/core-js/object/get-own-property-descriptors');
-var _Object$defineProperties = require('@babel/runtime-corejs2/core-js/object/define-properties');
-var _Object$defineProperty = require('@babel/runtime-corejs2/core-js/object/define-property');
-var _defineProperty = require('@babel/runtime-corejs2/helpers/defineProperty');
+var _regeneratorRuntime = require('@babel/runtime-corejs2/regenerator');
+var _objectSpread = require('@babel/runtime-corejs2/helpers/objectSpread');
 var _objectWithoutProperties = require('@babel/runtime-corejs2/helpers/objectWithoutProperties');
 var _asyncToGenerator = require('@babel/runtime-corejs2/helpers/asyncToGenerator');
-var _regeneratorRuntime = require('@babel/runtime-corejs2/regenerator');
 var URL = require('url');
 var cheerio = require('cheerio');
 var TurndownService = require('turndown');
@@ -20,35 +14,29 @@ var _Promise = require('@babel/runtime-corejs2/core-js/promise');
 var request = require('postman-request');
 var _Reflect$ownKeys = require('@babel/runtime-corejs2/core-js/reflect/own-keys');
 var _toConsumableArray = require('@babel/runtime-corejs2/helpers/toConsumableArray');
+var _defineProperty = require('@babel/runtime-corejs2/helpers/defineProperty');
 var _parseFloat = require('@babel/runtime-corejs2/core-js/parse-float');
 var _Set = require('@babel/runtime-corejs2/core-js/set');
-var _Array$from = require('@babel/runtime-corejs2/core-js/array/from');
-var _Symbol = require('@babel/runtime-corejs2/core-js/symbol');
-var _Symbol$iterator = require('@babel/runtime-corejs2/core-js/symbol/iterator');
-var _Array$isArray = require('@babel/runtime-corejs2/core-js/array/is-array');
-var _getIterator = require('@babel/runtime-corejs2/core-js/get-iterator');
 var _typeof = require('@babel/runtime-corejs2/helpers/typeof');
+var _getIterator = require('@babel/runtime-corejs2/core-js/get-iterator');
 var _Object$assign = require('@babel/runtime-corejs2/core-js/object/assign');
+var _Object$keys = require('@babel/runtime-corejs2/core-js/object/keys');
 var stringDirection = require('string-direction');
 var validUrl = require('valid-url');
 var moment = require('moment-timezone');
 var parseFormat = require('moment-parseformat');
 var wuzzy = require('wuzzy');
 var difflib = require('difflib');
+var _Array$from = require('@babel/runtime-corejs2/core-js/array/from');
 var ellipsize = require('ellipsize');
+var _Array$isArray = require('@babel/runtime-corejs2/core-js/array/is-array');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var _Object$keys__default = /*#__PURE__*/_interopDefaultLegacy(_Object$keys);
-var _Object$getOwnPropertySymbols__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertySymbols);
-var _Object$getOwnPropertyDescriptor__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertyDescriptor);
-var _Object$getOwnPropertyDescriptors__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertyDescriptors);
-var _Object$defineProperties__default = /*#__PURE__*/_interopDefaultLegacy(_Object$defineProperties);
-var _Object$defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_Object$defineProperty);
-var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty);
+var _regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);
+var _objectSpread__default = /*#__PURE__*/_interopDefaultLegacy(_objectSpread);
 var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
 var _asyncToGenerator__default = /*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);
-var _regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);
 var URL__default = /*#__PURE__*/_interopDefaultLegacy(URL);
 var cheerio__default = /*#__PURE__*/_interopDefaultLegacy(cheerio);
 var TurndownService__default = /*#__PURE__*/_interopDefaultLegacy(TurndownService);
@@ -59,22 +47,22 @@ var _Promise__default = /*#__PURE__*/_interopDefaultLegacy(_Promise);
 var request__default = /*#__PURE__*/_interopDefaultLegacy(request);
 var _Reflect$ownKeys__default = /*#__PURE__*/_interopDefaultLegacy(_Reflect$ownKeys);
 var _toConsumableArray__default = /*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);
+var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty);
 var _parseFloat__default = /*#__PURE__*/_interopDefaultLegacy(_parseFloat);
 var _Set__default = /*#__PURE__*/_interopDefaultLegacy(_Set);
-var _Array$from__default = /*#__PURE__*/_interopDefaultLegacy(_Array$from);
-var _Symbol__default = /*#__PURE__*/_interopDefaultLegacy(_Symbol);
-var _Symbol$iterator__default = /*#__PURE__*/_interopDefaultLegacy(_Symbol$iterator);
-var _Array$isArray__default = /*#__PURE__*/_interopDefaultLegacy(_Array$isArray);
-var _getIterator__default = /*#__PURE__*/_interopDefaultLegacy(_getIterator);
 var _typeof__default = /*#__PURE__*/_interopDefaultLegacy(_typeof);
+var _getIterator__default = /*#__PURE__*/_interopDefaultLegacy(_getIterator);
 var _Object$assign__default = /*#__PURE__*/_interopDefaultLegacy(_Object$assign);
+var _Object$keys__default = /*#__PURE__*/_interopDefaultLegacy(_Object$keys);
 var stringDirection__default = /*#__PURE__*/_interopDefaultLegacy(stringDirection);
 var validUrl__default = /*#__PURE__*/_interopDefaultLegacy(validUrl);
 var moment__default = /*#__PURE__*/_interopDefaultLegacy(moment);
 var parseFormat__default = /*#__PURE__*/_interopDefaultLegacy(parseFormat);
 var wuzzy__default = /*#__PURE__*/_interopDefaultLegacy(wuzzy);
 var difflib__default = /*#__PURE__*/_interopDefaultLegacy(difflib);
+var _Array$from__default = /*#__PURE__*/_interopDefaultLegacy(_Array$from);
 var ellipsize__default = /*#__PURE__*/_interopDefaultLegacy(ellipsize);
+var _Array$isArray__default = /*#__PURE__*/_interopDefaultLegacy(_Array$isArray);
 
 var NORMALIZE_RE = /\s{2,}(?![^<>]*<\/(pre|code|textarea)>)/g;
 function normalizeSpaces(text) {
@@ -250,10 +238,6 @@ var BAD_CONTENT_TYPES_RE = new RegExp("^(".concat(BAD_CONTENT_TYPES.join('|'), "
 
 var MAX_CONTENT_LENGTH = 5242880; // Turn the global proxy on or off
 
-function ownKeys$7(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$7(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$7(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$7(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
-
 function get(options) {
   return new _Promise__default['default'](function (resolve, reject) {
     request__default['default'](options, function (err, response, body) {
@@ -315,10 +299,12 @@ function fetchResource(_x, _x2) {
 }
 
 function _fetchResource() {
-  _fetchResource = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(url, parsedUrl) {
+  _fetchResource = _asyncToGenerator__default['default'](
+  /*#__PURE__*/
+  _regeneratorRuntime__default['default'].mark(function _callee(url, parsedUrl) {
     var headers,
         options,
-        _yield$get,
+        _ref2,
         response,
         body,
         _args = arguments;
@@ -329,9 +315,9 @@ function _fetchResource() {
           case 0:
             headers = _args.length > 2 && _args[2] !== undefined ? _args[2] : {};
             parsedUrl = parsedUrl || URL__default['default'].parse(encodeURI(url));
-            options = _objectSpread$7({
+            options = _objectSpread__default['default']({
               url: parsedUrl.href,
-              headers: _objectSpread$7(_objectSpread$7({}, REQUEST_HEADERS), headers),
+              headers: _objectSpread__default['default']({}, REQUEST_HEADERS, headers),
               timeout: FETCH_TIMEOUT,
               // Accept cookies
               jar: true,
@@ -350,9 +336,9 @@ function _fetchResource() {
             return get(options);
 
           case 5:
-            _yield$get = _context.sent;
-            response = _yield$get.response;
-            body = _yield$get.body;
+            _ref2 = _context.sent;
+            response = _ref2.response;
+            body = _ref2.body;
             _context.prev = 8;
             validateResponse(response);
             return _context.abrupt("return", {
@@ -373,7 +359,7 @@ function _fetchResource() {
             return _context.stop();
         }
       }
-    }, _callee, null, [[8, 13]]);
+    }, _callee, this, [[8, 13]]);
   }));
   return _fetchResource.apply(this, arguments);
 }
@@ -725,16 +711,12 @@ function cleanHOnes(article, $) {
   return $;
 }
 
-function ownKeys$6(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$6(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$6(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
-
 function removeAllButWhitelist($article, $) {
   $article.find('*').each(function (index, node) {
     var attrs = getAttrs(node);
     setAttrs(node, _Reflect$ownKeys__default['default'](attrs).reduce(function (acc, attr) {
       if (WHITELIST_ATTRS_RE.test(attr)) {
-        return _objectSpread$6(_objectSpread$6({}, acc), {}, _defineProperty__default['default']({}, attr, attrs[attr]));
+        return _objectSpread__default['default']({}, acc, _defineProperty__default['default']({}, attr, attrs[attr]));
       }
 
       return acc;
@@ -1358,11 +1340,6 @@ function linkDensity($node) {
   return 0;
 }
 
-function _createForOfIteratorHelper$4(o, allowArrayLike) { var it; if (typeof _Symbol__default['default'] === "undefined" || o[_Symbol$iterator__default['default']] == null) { if (_Array$isArray__default['default'](o) || (it = _unsupportedIterableToArray$4(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = _getIterator__default['default'](o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray$4(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$4(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return _Array$from__default['default'](o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$4(o, minLen); }
-
-function _arrayLikeToArray$4(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 // search for, find a meta tag associated.
 
 function extractFromMeta($, metaNames, cachedNames) {
@@ -1371,8 +1348,9 @@ function extractFromMeta($, metaNames, cachedNames) {
     return cachedNames.indexOf(name) !== -1;
   }); // eslint-disable-next-line no-restricted-syntax
 
-  var _iterator = _createForOfIteratorHelper$4(foundNames),
-      _step;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
   try {
     var _loop = function _loop() {
@@ -1410,26 +1388,29 @@ function extractFromMeta($, metaNames, cachedNames) {
       }
     };
 
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    for (var _iterator = _getIterator__default['default'](foundNames), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var _ret = _loop();
 
       if (_typeof__default['default'](_ret) === "object") return _ret.v;
     } // If nothing is found, return null
 
   } catch (err) {
-    _iterator.e(err);
+    _didIteratorError = true;
+    _iteratorError = err;
   } finally {
-    _iterator.f();
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
   }
 
   return null;
 }
-
-function _createForOfIteratorHelper$3(o, allowArrayLike) { var it; if (typeof _Symbol__default['default'] === "undefined" || o[_Symbol$iterator__default['default']] == null) { if (_Array$isArray__default['default'](o) || (it = _unsupportedIterableToArray$3(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = _getIterator__default['default'](o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray$3(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$3(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return _Array$from__default['default'](o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$3(o, minLen); }
-
-function _arrayLikeToArray$3(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function isGoodNode($node, maxChildren) {
   // If it has a number of children, it's more likely a container
@@ -1452,13 +1433,13 @@ function isGoodNode($node, maxChildren) {
 function extractFromSelectors($, selectors) {
   var maxChildren = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var textOnly = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-
   // eslint-disable-next-line no-restricted-syntax
-  var _iterator = _createForOfIteratorHelper$3(selectors),
-      _step;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
   try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    for (var _iterator = _getIterator__default['default'](selectors), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var selector = _step.value;
       var nodes = $(selector); // If we didn't get exactly one of this selector, this may be
       // a list of articles or comments. Skip it.
@@ -1482,9 +1463,18 @@ function extractFromSelectors($, selectors) {
       }
     }
   } catch (err) {
-    _iterator.e(err);
+    _didIteratorError = true;
+    _iteratorError = err;
   } finally {
-    _iterator.f();
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
   }
 
   return null;
@@ -1502,7 +1492,7 @@ function withinComment($node) {
   var parents = $node.parents().toArray();
   var commentParent = parents.find(function (parent) {
     var attrs = getAttrs(parent);
-    var nodeClass = attrs["class"],
+    var nodeClass = attrs.class,
         id = attrs.id;
     var classAndId = "".concat(nodeClass, " ").concat(id);
     return classAndId.includes('comment');
@@ -1616,17 +1606,19 @@ var Resource = {
   //                  attempting to fetch it ourselves. Expects a
   //                  string.
   // :param headers: Custom headers to be included in the request
-  create: function create(url, preparedResponse, parsedUrl) {
-    var _arguments = arguments,
-        _this = this;
-
-    return _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee() {
-      var headers, result, validResponse;
+  create: function () {
+    var _create = _asyncToGenerator__default['default'](
+    /*#__PURE__*/
+    _regeneratorRuntime__default['default'].mark(function _callee(url, preparedResponse, parsedUrl) {
+      var headers,
+          result,
+          validResponse,
+          _args = arguments;
       return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              headers = _arguments.length > 3 && _arguments[3] !== undefined ? _arguments[3] : {};
+              headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
 
               if (!preparedResponse) {
                 _context.next = 6;
@@ -1665,16 +1657,22 @@ var Resource = {
               return _context.abrupt("return", result);
 
             case 12:
-              return _context.abrupt("return", _this.generateDoc(result));
+              return _context.abrupt("return", this.generateDoc(result));
 
             case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
-    }))();
-  },
+      }, _callee, this);
+    }));
+
+    function create(_x, _x2, _x3) {
+      return _create.apply(this, arguments);
+    }
+
+    return create;
+  }(),
   generateDoc: function generateDoc(_ref) {
     var content = _ref.body,
         response = _ref.response;
@@ -1720,7 +1718,9 @@ var Resource = {
   }
 };
 
-var _marked = /*#__PURE__*/_regeneratorRuntime__default['default'].mark(range);
+var _marked =
+/*#__PURE__*/
+_regeneratorRuntime__default['default'].mark(range);
 
 function range() {
   var start,
@@ -1751,7 +1751,7 @@ function range() {
           return _context.stop();
       }
     }
-  }, _marked);
+  }, _marked, this);
 }
 
 // extremely simple url validation as a first step
@@ -2017,16 +2017,13 @@ var NewYorkerExtractor = {
 var WiredExtractor = {
   domain: 'www.wired.com',
   title: {
-    selectors: ['h1.content-header__hed', 'h1.post-title' // enter title selectors
-    ]
+    selectors: ['h1.content-header__hed', 'h1.post-title']
   },
   author: {
-    selectors: [['meta[name="author"]', 'value'], 'a[rel="author"]' // enter author selectors
-    ]
+    selectors: [['meta[name="author"]', 'value'], 'a[rel="author"]']
   },
   content: {
-    selectors: ['article.article.main-content', 'article.content' // enter content selectors
-    ],
+    selectors: ['article.article.main-content', 'article.content'],
     // Is there anything in the content you selected that needs transformed
     // before it's consumable content? E.g., unusual lazy loaded images
     transforms: [],
@@ -2054,16 +2051,13 @@ var WiredExtractor = {
 var MSNExtractor = {
   domain: 'www.msn.com',
   title: {
-    selectors: ['h1' // enter title selectors
-    ]
+    selectors: ['h1']
   },
   author: {
-    selectors: ['span.authorname-txt' // enter author selectors
-    ]
+    selectors: ['span.authorname-txt']
   },
   content: {
-    selectors: ['div.richtext' // enter content selectors
-    ],
+    selectors: ['div.richtext'],
     // Is there anything in the content you selected that needs transformed
     // before it's consumable content? E.g., unusual lazy loaded images
     transforms: [],
@@ -2091,12 +2085,10 @@ var MSNExtractor = {
 var YahooExtractor = {
   domain: 'www.yahoo.com',
   title: {
-    selectors: ['header.canvas-header' // enter title selectors
-    ]
+    selectors: ['header.canvas-header']
   },
   author: {
-    selectors: ['span.provider-name' // enter author selectors
-    ]
+    selectors: ['span.provider-name']
   },
   content: {
     selectors: [// enter content selectors
@@ -2129,12 +2121,10 @@ var YahooExtractor = {
 var BuzzfeedExtractor = {
   domain: 'www.buzzfeed.com',
   title: {
-    selectors: ['h1[id="post-title"]' // enter title selectors
-    ]
+    selectors: ['h1[id="post-title"]']
   },
   author: {
-    selectors: ['a[data-action="user/username"]', 'byline__author' // enter author selectors
-    ]
+    selectors: ['a[data-action="user/username"]', 'byline__author']
   },
   content: {
     selectors: [['.longform_custom_header_media', '#buzz_sub_buzz'], '#buzz_sub_buzz'],
@@ -2176,16 +2166,13 @@ var BuzzfeedExtractor = {
 var WikiaExtractor = {
   domain: 'fandom.wikia.com',
   title: {
-    selectors: ['h1.entry-title' // enter title selectors
-    ]
+    selectors: ['h1.entry-title']
   },
   author: {
-    selectors: ['.author vcard', '.fn' // enter author selectors
-    ]
+    selectors: ['.author vcard', '.fn']
   },
   content: {
-    selectors: ['.grid-content', '.entry-content' // enter content selectors
-    ],
+    selectors: ['.grid-content', '.entry-content'],
     // Is there anything in the content you selected that needs transformed
     // before it's consumable content? E.g., unusual lazy loaded images
     transforms: [],
@@ -2213,12 +2200,10 @@ var WikiaExtractor = {
 var LittleThingsExtractor = {
   domain: 'www.littlethings.com',
   title: {
-    selectors: ['h1.post-title' // enter title selectors
-    ]
+    selectors: ['h1.post-title']
   },
   author: {
-    selectors: [['meta[name="author"]', 'value'] // enter author selectors
-    ]
+    selectors: [['meta[name="author"]', 'value']]
   },
   content: {
     selectors: [// enter content selectors
@@ -2676,8 +2661,7 @@ var WwwThevergeComExtractor = {
     // Is there anything that is in the result that shouldn't be?
     // The clean selectors will remove anything that matches from
     // the result
-    clean: ['.aside', 'img.c-dynamic-image' // images come from noscript transform
-    ]
+    clean: ['.aside', 'img.c-dynamic-image']
   }
 };
 
@@ -3415,8 +3399,7 @@ var WwwThepoliticalinsiderComExtractor = {
     ]
   },
   lead_image_url: {
-    selectors: [['meta[name="og:image"]', 'value'] // enter selectors
-    ]
+    selectors: [['meta[name="og:image"]', 'value']]
   },
   content: {
     selectors: ['div#article-body'],
@@ -4903,8 +4886,7 @@ var WwwRedditComExtractor = {
   content: {
     selectors: [['div[data-test-id="post-content"] p'], // text post
     ['div[data-test-id="post-content"] a[target="_blank"]:not([data-click-id="timestamp"])', // external link
-    'div[data-test-id="post-content"] div[data-click-id="media"]' // embedded media
-    ], // external link with media preview (YouTube, imgur album, etc...)
+    'div[data-test-id="post-content"] div[data-click-id="media"]'], // external link with media preview (YouTube, imgur album, etc...)
     ['div[data-test-id="post-content"] div[data-click-id="media"]'], // Embedded media (Reddit video)
     ['div[data-test-id="post-content"] a[target="_blank"]:not([data-click-id="timestamp"])'], // external link
     'div[data-test-id="post-content"]'],
@@ -6091,6 +6073,27 @@ var WwwAbendblattDeExtractor = {
   }
 };
 
+var WwwLadbibleComExtractor = {
+  domain: 'www.ladbible.com',
+  title: {
+    selectors: ['h1']
+  },
+  author: {
+    selectors: ['[class*=Byline]']
+  },
+  date_published: {
+    selectors: ['time'],
+    timezone: 'Europe/London'
+  },
+  lead_image_url: {
+    selectors: [['meta[name="og:image"]', 'value']]
+  },
+  content: {
+    selectors: ['[class*=ArticleContainer]'],
+    clean: ['time', 'source', 'a[href^="https://www.ladbible.com/"]', 'picture', '[class*=StyledCardBlock]']
+  }
+};
+
 var CustomExtractors = /*#__PURE__*/Object.freeze({
   __proto__: null,
   BloggerExtractor: BloggerExtractor,
@@ -6233,15 +6236,13 @@ var CustomExtractors = /*#__PURE__*/Object.freeze({
   ArstechnicaComExtractor: ArstechnicaComExtractor,
   WwwEngadgetComExtractor: WwwEngadgetComExtractor,
   MaTtiasBeExtractor: MaTtiasBeExtractor,
-  WwwAbendblattDeExtractor: WwwAbendblattDeExtractor
+  WwwAbendblattDeExtractor: WwwAbendblattDeExtractor,
+  WwwLadbibleComExtractor: WwwLadbibleComExtractor
 });
 
-function ownKeys$5(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$5(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$5(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$5(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 var Extractors = _Object$keys__default['default'](CustomExtractors).reduce(function (acc, key) {
   var extractor = CustomExtractors[key];
-  return _objectSpread$5(_objectSpread$5({}, acc), mergeSupportedDomains(extractor));
+  return _objectSpread__default['default']({}, acc, mergeSupportedDomains(extractor));
 }, {});
 
 // CLEAN AUTHOR CONSTANTS
@@ -6541,15 +6542,6 @@ function extractBestNode($, opts) {
   return $topCandidate;
 }
 
-function _createForOfIteratorHelper$2(o, allowArrayLike) { var it; if (typeof _Symbol__default['default'] === "undefined" || o[_Symbol$iterator__default['default']] == null) { if (_Array$isArray__default['default'](o) || (it = _unsupportedIterableToArray$2(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = _getIterator__default['default'](o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return _Array$from__default['default'](o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
-
-function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ownKeys$4(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$4(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 var GenericContentExtractor = {
   defaultOpts: {
     stripUnlikelyCandidates: true,
@@ -6580,7 +6572,7 @@ var GenericContentExtractor = {
         html = _ref.html,
         title = _ref.title,
         url = _ref.url;
-    opts = _objectSpread$4(_objectSpread$4({}, this.defaultOpts), opts);
+    opts = _objectSpread__default['default']({}, this.defaultOpts, opts);
     $ = $ || cheerio__default['default'].load(html); // Cascade through our extraction-specific opts in an ordered fashion,
     // turning them off as we try to extract content.
 
@@ -6593,13 +6585,14 @@ var GenericContentExtractor = {
     // eslint-disable-next-line no-restricted-syntax
 
 
-    var _iterator = _createForOfIteratorHelper$2(_Reflect$ownKeys__default['default'](opts).filter(function (k) {
-      return opts[k] === true;
-    })),
-        _step;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
     try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      for (var _iterator = _getIterator__default['default'](_Reflect$ownKeys__default['default'](opts).filter(function (k) {
+        return opts[k] === true;
+      })), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var key = _step.value;
         opts[key] = false;
         $ = cheerio__default['default'].load(html);
@@ -6610,9 +6603,18 @@ var GenericContentExtractor = {
         }
       }
     } catch (err) {
-      _iterator.e(err);
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
-      _iterator.f();
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
     }
 
     return this.cleanAndReturnNode(node, $);
@@ -6716,11 +6718,6 @@ var AUTHOR_SELECTORS = ['.entry .entry-author', '.author.vcard .fn', '.author .v
 var bylineRe = /^[\n\s]*By/i;
 var BYLINE_SELECTORS_RE = [['#byline', bylineRe], ['.byline', bylineRe]];
 
-function _createForOfIteratorHelper$1(o, allowArrayLike) { var it; if (typeof _Symbol__default['default'] === "undefined" || o[_Symbol$iterator__default['default']] == null) { if (_Array$isArray__default['default'](o) || (it = _unsupportedIterableToArray$1(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = _getIterator__default['default'](o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return _Array$from__default['default'](o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
-
-function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 var GenericAuthorExtractor = {
   extract: function extract(_ref) {
     var $ = _ref.$,
@@ -6744,11 +6741,12 @@ var GenericAuthorExtractor = {
     // eslint-disable-next-line no-restricted-syntax
 
 
-    var _iterator = _createForOfIteratorHelper$1(BYLINE_SELECTORS_RE),
-        _step;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
     try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      for (var _iterator = _getIterator__default['default'](BYLINE_SELECTORS_RE), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var _step$value = _slicedToArray__default['default'](_step.value, 2),
             selector = _step$value[0],
             regex = _step$value[1];
@@ -6764,9 +6762,18 @@ var GenericAuthorExtractor = {
         }
       }
     } catch (err) {
-      _iterator.e(err);
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
-      _iterator.f();
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
     }
 
     return null;
@@ -6946,11 +6953,6 @@ function scoreByPosition($imgs, index) {
   return $imgs.length / 2 - index;
 }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof _Symbol__default['default'] === "undefined" || o[_Symbol$iterator__default['default']] == null) { if (_Array$isArray__default['default'](o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = _getIterator__default['default'](o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return _Array$from__default['default'](o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 // it. Like content and next page extraction, uses a scoring system
 // to determine what the most likely image may be. Short circuits
 // on really probable things like og:image meta tags.
@@ -7016,11 +7018,12 @@ var GenericLeadImageUrlExtractor = {
     // eslint-disable-next-line no-restricted-syntax
 
 
-    var _iterator = _createForOfIteratorHelper(LEAD_IMAGE_URL_SELECTORS),
-        _step;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
     try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      for (var _iterator = _getIterator__default['default'](LEAD_IMAGE_URL_SELECTORS), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         var selector = _step.value;
         var $node = $(selector).first();
         var src = $node.attr('src');
@@ -7045,9 +7048,18 @@ var GenericLeadImageUrlExtractor = {
         }
       }
     } catch (err) {
-      _iterator.e(err);
+      _didIteratorError = true;
+      _iteratorError = err;
     } finally {
-      _iterator.f();
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
     }
 
     return null;
@@ -7465,9 +7477,6 @@ var GenericWordCountExtractor = {
   }
 };
 
-function ownKeys$3(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$3(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 var GenericExtractor = {
   // This extractor is the default for all domains
   domain: '*',
@@ -7497,20 +7506,20 @@ var GenericExtractor = {
     var title = this.title(options);
     var date_published = this.date_published(options);
     var author = this.author(options);
-    var content = this.content(_objectSpread$3(_objectSpread$3({}, options), {}, {
+    var content = this.content(_objectSpread__default['default']({}, options, {
       title: title
     }));
-    var lead_image_url = this.lead_image_url(_objectSpread$3(_objectSpread$3({}, options), {}, {
+    var lead_image_url = this.lead_image_url(_objectSpread__default['default']({}, options, {
       content: content
     }));
-    var dek = this.dek(_objectSpread$3(_objectSpread$3({}, options), {}, {
+    var dek = this.dek(_objectSpread__default['default']({}, options, {
       content: content
     }));
     var next_page_url = this.next_page_url(options);
-    var excerpt = this.excerpt(_objectSpread$3(_objectSpread$3({}, options), {}, {
+    var excerpt = this.excerpt(_objectSpread__default['default']({}, options, {
       content: content
     }));
-    var word_count = this.word_count(_objectSpread$3(_objectSpread$3({}, options), {}, {
+    var word_count = this.word_count(_objectSpread__default['default']({}, options, {
       content: content
     }));
     var direction = this.direction({
@@ -7557,10 +7566,6 @@ function getExtractor(url, parsedUrl, $) {
   var baseDomain = hostname.split('.').slice(-2).join('.');
   return apiExtractors[hostname] || apiExtractors[baseDomain] || Extractors[hostname] || Extractors[baseDomain] || detectByHtml($) || GenericExtractor;
 }
-
-function ownKeys$2(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$2(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 
 function cleanBySelectors($content, $, _ref) {
   var clean = _ref.clean;
@@ -7666,7 +7671,7 @@ function select(opts) {
     $content = transformAndClean($content);
 
     if (Cleaners[type]) {
-      Cleaners[type]($content, _objectSpread$2(_objectSpread$2({}, opts), {}, {
+      Cleaners[type]($content, _objectSpread__default['default']({}, opts, {
         defaultCleaner: defaultCleaner
       }));
     }
@@ -7712,7 +7717,7 @@ function select(opts) {
   // for this type; defaults to true
 
   if (defaultCleaner && Cleaners[type]) {
-    return Cleaners[type](result, _objectSpread$2(_objectSpread$2({}, opts), extractionOpts));
+    return Cleaners[type](result, _objectSpread__default['default']({}, opts, extractionOpts));
   }
 
   return result;
@@ -7722,7 +7727,7 @@ function selectExtendedTypes(extend, opts) {
 
   _Reflect$ownKeys__default['default'](extend).forEach(function (t) {
     if (!results[t]) {
-      results[t] = select(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+      results[t] = select(_objectSpread__default['default']({}, opts, {
         type: t,
         extractionOpts: extend[t]
       }));
@@ -7737,7 +7742,7 @@ function extractResult(opts) {
       extractor = opts.extractor,
       _opts$fallback = opts.fallback,
       fallback = _opts$fallback === void 0 ? true : _opts$fallback;
-  var result = select(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+  var result = select(_objectSpread__default['default']({}, opts, {
     extractionOpts: extractor[type]
   })); // If custom parser succeeds, return the result
 
@@ -7760,12 +7765,12 @@ var RootExtractor = {
         extractedTitle = _opts.extractedTitle; // This is the generic extractor. Run its extract method
 
     if (extractor.domain === '*') return extractor.extract(opts);
-    opts = _objectSpread$2(_objectSpread$2({}, opts), {}, {
+    opts = _objectSpread__default['default']({}, opts, {
       extractor: extractor
     });
 
     if (contentOnly) {
-      var _content = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+      var _content = extractResult(_objectSpread__default['default']({}, opts, {
         type: 'content',
         extractHtml: true,
         title: extractedTitle
@@ -7776,46 +7781,46 @@ var RootExtractor = {
       };
     }
 
-    var title = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var title = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'title'
     }));
-    var date_published = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var date_published = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'date_published'
     }));
-    var author = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var author = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'author'
     }));
-    var next_page_url = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var next_page_url = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'next_page_url'
     }));
-    var content = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var content = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'content',
       extractHtml: true,
       title: title
     }));
-    var lead_image_url = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var lead_image_url = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'lead_image_url',
       content: content
     }));
-    var excerpt = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var excerpt = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'excerpt',
       content: content
     }));
-    var dek = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var dek = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'dek',
       content: content,
       excerpt: excerpt
     }));
-    var word_count = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var word_count = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'word_count',
       content: content
     }));
-    var direction = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var direction = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'direction',
       title: title
     }));
 
-    var _ref3 = extractResult(_objectSpread$2(_objectSpread$2({}, opts), {}, {
+    var _ref3 = extractResult(_objectSpread__default['default']({}, opts, {
       type: 'url_and_domain'
     })) || {
       url: null,
@@ -7830,7 +7835,7 @@ var RootExtractor = {
       extendedResults = selectExtendedTypes(extractor.extend, opts);
     }
 
-    return _objectSpread$2({
+    return _objectSpread__default['default']({
       title: title,
       content: content,
       author: author,
@@ -7847,15 +7852,14 @@ var RootExtractor = {
   }
 };
 
-function ownKeys$1(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys$1(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 function collectAllPages(_x) {
   return _collectAllPages.apply(this, arguments);
 }
 
 function _collectAllPages() {
-  _collectAllPages = _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee(_ref) {
+  _collectAllPages = _asyncToGenerator__default['default'](
+  /*#__PURE__*/
+  _regeneratorRuntime__default['default'].mark(function _callee(_ref) {
     var next_page_url, html, $, metaCache, result, Extractor, title, url, pages, previousUrls, extractorOpts, nextPageResult, word_count;
     return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
       while (1) {
@@ -7891,7 +7895,7 @@ function _collectAllPages() {
             };
             nextPageResult = RootExtractor.extract(Extractor, extractorOpts);
             previousUrls.push(next_page_url);
-            result = _objectSpread$1(_objectSpread$1({}, result), {}, {
+            result = _objectSpread__default['default']({}, result, {
               content: "".concat(result.content, "<hr><h4>Page ").concat(pages, "</h4>").concat(nextPageResult.content)
             }); // eslint-disable-next-line prefer-destructuring
 
@@ -7903,7 +7907,7 @@ function _collectAllPages() {
             word_count = GenericExtractor.word_count({
               content: "<div>".concat(result.content, "</div>")
             });
-            return _context.abrupt("return", _objectSpread$1(_objectSpread$1({}, result), {}, {
+            return _context.abrupt("return", _objectSpread__default['default']({}, result, {
               total_pages: pages,
               pages_rendered: pages,
               word_count: word_count
@@ -7914,25 +7918,46 @@ function _collectAllPages() {
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, this);
   }));
   return _collectAllPages.apply(this, arguments);
 }
 
-function ownKeys(object, enumerableOnly) { var keys = _Object$keys__default['default'](object); if (_Object$getOwnPropertySymbols__default['default']) { var symbols = _Object$getOwnPropertySymbols__default['default'](object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _Object$getOwnPropertyDescriptor__default['default'](object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty__default['default'](target, key, source[key]); }); } else if (_Object$getOwnPropertyDescriptors__default['default']) { _Object$defineProperties__default['default'](target, _Object$getOwnPropertyDescriptors__default['default'](source)); } else { ownKeys(Object(source)).forEach(function (key) { _Object$defineProperty__default['default'](target, key, _Object$getOwnPropertyDescriptor__default['default'](source, key)); }); } } return target; }
 var Mercury = {
-  parse: function parse(url) {
-    var _arguments = arguments;
-    return _asyncToGenerator__default['default']( /*#__PURE__*/_regeneratorRuntime__default['default'].mark(function _callee() {
-      var _ref, html, opts, _opts$fetchAllPages, fetchAllPages, _opts$fallback, fallback, _opts$contentType, contentType, _opts$headers, headers, extend, customExtractor, parsedUrl, $, Extractor, metaCache, extendedTypes, result, _result, title, next_page_url, turndownService;
+  parse: function () {
+    var _parse = _asyncToGenerator__default['default'](
+    /*#__PURE__*/
+    _regeneratorRuntime__default['default'].mark(function _callee(url) {
+      var _ref,
+          html,
+          opts,
+          _opts$fetchAllPages,
+          fetchAllPages,
+          _opts$fallback,
+          fallback,
+          _opts$contentType,
+          contentType,
+          _opts$headers,
+          headers,
+          extend,
+          customExtractor,
+          parsedUrl,
+          $,
+          Extractor,
+          metaCache,
+          extendedTypes,
+          result,
+          _result,
+          title,
+          next_page_url,
+          turndownService,
+          _args = arguments;
 
       return _regeneratorRuntime__default['default'].wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _ref = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : {}, html = _ref.html, opts = _objectWithoutProperties__default['default'](_ref, ["html"]);
+              _ref = _args.length > 1 && _args[1] !== undefined ? _args[1] : {}, html = _ref.html, opts = _objectWithoutProperties__default['default'](_ref, ["html"]);
               _opts$fetchAllPages = opts.fetchAllPages, fetchAllPages = _opts$fetchAllPages === void 0 ? true : _opts$fetchAllPages, _opts$fallback = opts.fallback, fallback = _opts$fallback === void 0 ? true : _opts$fallback, _opts$contentType = opts.contentType, contentType = _opts$contentType === void 0 ? 'html' : _opts$contentType, _opts$headers = opts.headers, headers = _opts$headers === void 0 ? {} : _opts$headers, extend = opts.extend, customExtractor = opts.customExtractor; // if no url was passed and this is the browser version,
               // set url to window.location.href and load the html
               // from the current page
@@ -8032,7 +8057,7 @@ var Mercury = {
               break;
 
             case 25:
-              result = _objectSpread(_objectSpread({}, result), {}, {
+              result = _objectSpread__default['default']({}, result, {
                 total_pages: 1,
                 rendered_pages: 1
               });
@@ -8045,16 +8070,22 @@ var Mercury = {
                 result.content = $.text($(result.content));
               }
 
-              return _context.abrupt("return", _objectSpread(_objectSpread({}, result), extendedTypes));
+              return _context.abrupt("return", _objectSpread__default['default']({}, result, extendedTypes));
 
             case 28:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
-    }))();
-  },
+      }, _callee, this);
+    }));
+
+    function parse(_x) {
+      return _parse.apply(this, arguments);
+    }
+
+    return parse;
+  }(),
   browser: !!cheerio__default['default'].browser,
   // A convenience method for getting a resource
   // to work with, e.g., for custom extractor generator

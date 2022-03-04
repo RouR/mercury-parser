@@ -139,3 +139,5 @@ export * from './arstechnica.com';
 export * from './www.engadget.com';
 export * from './ma.ttias.be';
 export * from './www.abendblatt.de';
+export * from './www.ladbible.com';
+export * from './timesofindia.indiatimes.com';
