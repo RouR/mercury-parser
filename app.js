@@ -8,19 +8,23 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
-const MyConst = require('./routes/const')
+const MyConst = require('./routes/const');
 
-console.log("will use user-agent", MyConst.MyConst.userAgent, process.env.UserAgent)
+console.log(
+  'will use user-agent',
+  MyConst.MyConst.userAgent,
+  process.env.UserAgent
+);
 
 app.use(logger('dev'));
 // app.use(bodyParser.json()) // for parsing application/json
-app.use(express.json({limit: '50mb', extended: true}));
+app.use(express.json({ limit: '50mb', extended: true }));
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -31,34 +35,13 @@ app.use(function(err, req, res, next) {
 });
 
 /**
- * Get port from environment and store in Express.
- */
-
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-const server = http.createServer(app);
-console.log(`will start at http://localhost:${ port}`)
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(port)) {
     // named pipe
     return val;
@@ -73,6 +56,13 @@ function normalizePort(val) {
 }
 
 /**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
  * Event listener for HTTP server "error" event.
  */
 
@@ -81,18 +71,16 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? `Pipe ${  port}`
-    : `Port ${  port}`;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(`${bind  } requires elevated privileges`);
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(`${bind  } is already in use`);
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -101,13 +89,26 @@ function onError(error) {
 }
 
 /**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app);
+console.log(`will start at http://localhost:${port}`);
+
+/**
  * Event listener for HTTP server "listening" event.
  */
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? `pipe ${  addr}`
-    : `port ${  addr.port}`;
-  debug(`Listening on ${  bind}`);
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
+  debug(`Listening on ${bind}`);
 }
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
