@@ -1,9 +1,12 @@
 FROM node:16-buster-slim
 
-COPY . .
-#WORKDIR mercury-parser
+WORKDIR /usr/src/app
+COPY package*.json ./
+COPY yarn.lock ./
+
 RUN yarn install
+
+COPY . .
 EXPOSE 3000
-#CMD [ "yarn", "serve", "--port", "3000", "--host", "0.0.0.0" ]
 CMD [ "node", "app.js"]
 #RUN ls -la

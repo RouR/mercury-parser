@@ -67,6 +67,7 @@ app.set('port', port);
  */
 
 function onError(error) {
+  console.error(`mercury error ${JSON.stringify(error)}`);
   if (error.syscall !== 'listen') {
     throw error;
   }

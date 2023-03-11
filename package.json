@@ -30,6 +30,7 @@
     "postlight-parser": "./cli.js"
   },
   "scripts": {
+    "web": "node app.js",
     "lint": "eslint . --fix",
     "lint:ci": "remark . && eslint .",
     "lint-fix-quiet": "eslint --fix --quiet",
@@ -152,17 +153,5 @@
   "husky": {
     "hooks": {
     }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{json,css,md}": [
-      "remark .",
-      "prettier --write",
-      "git add"
-    ]
   }
 }

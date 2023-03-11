@@ -2,3 +2,5 @@
 **/.github
 **/.idea
 **/*.bat
+node_modules
+npm-debug.log
