@@ -26,6 +26,10 @@ app.use('/', indexRouter);
 // error handler
 app.use(function(err, req, res) {
   // set locals, only providing error in development
+
+  if(res.locals === undefined)
+    return;
+
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

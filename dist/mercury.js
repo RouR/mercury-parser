@@ -1678,14 +1678,25 @@ var Resource = {
               return _context.abrupt("return", result);
 
             case 12:
+              _context.prev = 12;
               return _context.abrupt("return", this.generateDoc(result));
 
-            case 13:
+            case 16:
+              _context.prev = 16;
+              _context.t0 = _context["catch"](12);
+              result = {
+                failed: true,
+                error: true,
+                message: _context.t0.message
+              };
+              return _context.abrupt("return", result);
+
+            case 20:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this);
+      }, _callee, this, [[12, 16]]);
     }));
 
     function create(_x, _x2, _x3) {
@@ -1704,7 +1715,7 @@ var Resource = {
     // https://github.com/ReadabilityHoldings/readability/blob/8dc89613241d04741ebd42fa9fa7df1b1d746303/readability/utils/text.py#L57
 
     if (!contentType.includes('html') && !contentType.includes('text')) {
-      throw new Error('Content does not appear to be text.');
+      throw new Error("Content does not appear to be text. ".concat(contentType));
     }
 
     var $ = this.encodeDoc({

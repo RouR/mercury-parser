@@ -40,7 +40,16 @@ const Resource = {
       return result;
     }
 
-    return this.generateDoc(result);
+    try {
+      return this.generateDoc(result);
+    }catch (e) {
+      result = {
+        failed: true,
+        error: true,
+        message: e.message,
+      };
+      return result;
+    }
   },
 
   generateDoc({ body: content, response, alreadyDecoded = false }) {
@@ -49,7 +58,7 @@ const Resource = {
     // TODO: Implement is_text function from
     // https://github.com/ReadabilityHoldings/readability/blob/8dc89613241d04741ebd42fa9fa7df1b1d746303/readability/utils/text.py#L57
     if (!contentType.includes('html') && !contentType.includes('text')) {
-      throw new Error('Content does not appear to be text.');
+      throw new Error(`Content does not appear to be text. ${contentType}`);
     }
 
     let $ = this.encodeDoc({ content, contentType, alreadyDecoded });
