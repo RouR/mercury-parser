@@ -30,7 +30,7 @@
     "postlight-parser": "./cli.js"
   },
   "scripts": {
-    "web": "node app.js",
+    "web": "rollup -c && node app.js",
     "lint": "eslint . --fix",
     "lint:ci": "remark . && eslint .",
     "lint-fix-quiet": "eslint --fix --quiet",

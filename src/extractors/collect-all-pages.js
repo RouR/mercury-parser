@@ -22,29 +22,34 @@ export default async function collectAllPages({
     pages += 1;
     // eslint-disable-next-line no-await-in-loop
     $ = await Resource.create(next_page_url);
-    html = $.html();
+    if(!$ || $.html === undefined){
+      console.error(`collectAllPages failed ${next_page_url}`);
+      next_page_url = false;
+    }else {
+      html = $.html();
 
-    const extractorOpts = {
-      url: next_page_url,
-      html,
-      $,
-      metaCache,
-      extractedTitle: title,
-      previousUrls,
-    };
+      const extractorOpts = {
+        url: next_page_url,
+        html,
+        $,
+        metaCache,
+        extractedTitle: title,
+        previousUrls,
+      };
 
-    const nextPageResult = RootExtractor.extract(Extractor, extractorOpts);
+      const nextPageResult = RootExtractor.extract(Extractor, extractorOpts);
 
-    previousUrls.push(next_page_url);
-    result = {
-      ...result,
-      content: `${result.content}<hr><h4>Page ${pages}</h4>${
-        nextPageResult.content
-      }`,
-    };
+      previousUrls.push(next_page_url);
+      result = {
+        ...result,
+        content: `${result.content}<hr><h4>Page ${pages}</h4>${
+          nextPageResult.content
+        }`,
+      };
 
-    // eslint-disable-next-line prefer-destructuring
-    next_page_url = nextPageResult.next_page_url;
+      // eslint-disable-next-line prefer-destructuring
+      next_page_url = nextPageResult.next_page_url;
+    }
   }
 
   const word_count = GenericExtractor.word_count({
