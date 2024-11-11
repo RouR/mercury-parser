@@ -89,6 +89,7 @@ function onError(error) {
       process.exit(1);
       break;
     default:
+      console.error(`some error`);
       throw error;
   }
 }

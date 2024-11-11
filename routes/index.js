@@ -16,6 +16,7 @@ router.get('/', function(_, res) {
 });
 
 router.get('/parse', async (req, res) => {
+  console.log(`parse starting ${req.query.zzz}`);
   const result = await Mercury.parse(req.query.zzz, {
     headers: {
       // Cookie: 'name=value; name2=value2; name3=value3',
@@ -29,6 +30,7 @@ router.get('/parse', async (req, res) => {
 });
 
 router.post('/parse-html', async (req, res) => {
+  console.log('parse-html starting');
   // console.log('parse-html request:', req.body); // check app.js
   const result = await Mercury.parse(req.body.url, {
     contentType: 'html',
